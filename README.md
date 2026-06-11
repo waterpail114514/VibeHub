@@ -1,5 +1,5 @@
 # VibeHub
-
+![icon](VibeHub.png)
 和朋友一起 Vibecoding 的轻量协作工具 — 桌面浮窗 + 增量同步服务器。
 
 ### 怎么用

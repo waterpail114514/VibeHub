@@ -1,0 +1,62 @@
+{
+  "name": "vibehub-desktop",
+  "version": "1.5.0",
+  "description": "VibeHub Desktop - frosted glass floating window",
+  "main": "main.js",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "build": "vite build && electron-builder",
+    "start": "electron .",
+    "vite-dev": "vite",
+    "dist": "vite build && electron-builder --win portable"
+  },
+  "dependencies": {
+    "marked": "^18.0.5",
+    "rcedit": "^5.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.35.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.0",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.0",
+    "electron": "^33.3.0",
+    "electron-builder": "^25.1.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16",
+    "vite": "^6.0.0",
+    "wait-on": "^8.0.0"
+  },
+  "build": {
+    "appId": "com.vibehub.desktop",
+    "productName": "VibeHub",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "ipc-handlers.js",
+      "config.js",
+      "dist/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "icon": "icon.ico",
+      "sign": null,
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "portable": {
+      "artifactName": "VibeHub.exe"
+    }
+  }
+}

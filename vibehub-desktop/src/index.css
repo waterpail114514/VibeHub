@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --blur-amount: 20px;
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --text: #1d1d1f;
+  --muted: #86868b;
+  --card-bg: rgba(255, 255, 255, 0.50);
+  --card-hover: rgba(255, 255, 255, 0.65);
+  --header-bg: rgba(255, 255, 255, 0.25);
+  --footer-bg: rgba(255, 255, 255, 0.15);
+  --border: rgba(0, 0, 0, 0.08);
+  --accent: #007AFF;
+  --btn-bg: rgba(0, 0, 0, 0.04);
+}
+
+.dark {
+  --glass-bg: rgba(18, 18, 28, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --text: #e4e4ec;
+  --muted: #8888a0;
+  --card-bg: rgba(28, 28, 42, 0.85);
+  --card-hover: rgba(38, 38, 56, 0.90);
+  --header-bg: rgba(18, 18, 28, 0.80);
+  --footer-bg: rgba(18, 18, 28, 0.60);
+  --border: rgba(255, 255, 255, 0.05);
+  --accent: #a5b4fc;
+  --btn-bg: rgba(255, 255, 255, 0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  color: #1d1d1f;
+  background: transparent !important;
+}
+
+/* Frosted glass base */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-amount)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur-amount)) saturate(180%);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: all 0.2s ease;
+}
+
+.glass-card:hover {
+  background: var(--card-hover);
+  border-color: rgba(0, 122, 255, 0.25);
+}
+
+.glass-btn {
+  background: var(--btn-bg);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.70);
+  border-color: rgba(0, 122, 255, 0.30);
+}
+.glass-btn:active {
+  transform: scale(0.97);
+}
+.glass-btn.primary {
+  background: rgba(0, 122, 255, 0.88);
+  color: white;
+  border-color: rgba(0, 122, 255, 0.4);
+}
+.glass-btn.primary:hover {
+  background: rgba(0, 122, 255, 1);
+}
+.glass-btn.danger {
+  background: rgba(255, 59, 48, 0.88);
+  color: white;
+  border-color: rgba(255, 59, 48, 0.4);
+}
+.glass-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #1d1d1f;
+  outline: none;
+  transition: all 0.15s ease;
+  width: 100%;
+}
+.glass-input:focus {
+  border-color: rgba(0, 122, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+.glass-input::placeholder {
+  color: #aeaeb2;
+}
+
+/* Title bar */
+.titlebar {
+  -webkit-app-region: drag;
+  user-select: none;
+}
+.titlebar-btn {
+  -webkit-app-region: no-drag;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.22); }
+
+/* Solid popup — more opaque than glass-card, for dropdowns and dialogs */
+.popup-solid {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
+}
+.dark .popup-solid {
+  background: rgba(24, 24, 36, 0.96);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Dialog overlay */
+.dialog-overlay {
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Toast */
+.toast-enter {
+  animation: slideUp 0.3s ease-out;
+}
